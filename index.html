@@ -2,570 +2,182 @@ index.html
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Happy Birthday Riya 🤍</title>
-  <meta name="description" content="A birthday website made with love." />
 
   <style>
-    :root{
-      --bg1:#0b1020;
-      --bg2:#1b0f2e;
-      --card: rgba(255,255,255,.08);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.7);
-      --accent:#ff6fb1;
-      --accent2:#7c5cff;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 18px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
     body{
       margin:0;
-      font-family: var(--sans);
-      color: var(--text);
-      overflow-x:hidden;
-      background:
-        radial-gradient(1200px 600px at 10% 10%, rgba(255,111,177,.18), transparent 60%),
-        radial-gradient(900px 600px at 90% 20%, rgba(124,92,255,.18), transparent 55%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: linear-gradient(180deg,#0b1020,#1b0f2e);
+      color:#fff;
     }
-
-    /* Floating hearts */
-    .heart{
-      position: fixed;
-      bottom:-40px;
-      width: 18px;
-      height: 18px;
-      transform: rotate(45deg);
-      opacity: .75;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      filter: drop-shadow(0 10px 12px rgba(0,0,0,.25));
-      animation: floatUp linear forwards;
-      z-index: 0;
-      border-radius: 4px;
-    }
-    .heart:before, .heart:after{
-      content:"";
-      position:absolute;
-      width:18px;height:18px;
-      background: inherit;
-      border-radius: 50%;
-    }
-    .heart:before{ left:-9px; top:0; }
-    .heart:after{ left:0; top:-9px; }
-    @keyframes floatUp{
-      to{ transform: translateY(-120vh) rotate(45deg); opacity: 0; }
-    }
-
     .wrap{
-      position:relative;
-      z-index:1;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 36px 18px 80px;
-    }
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:14px;
-      margin-bottom: 18px;
-    }
-    .badge{
-      font-family: var(--mono);
-      font-size: 12px;
-      padding: 8px 10px;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      backdrop-filter: blur(8px);
-    }
-
-    .hero{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 18px;
-      align-items: stretch;
-      margin-top: 14px;
+      max-width:900px;
+      margin:auto;
+      padding:30px 16px 70px;
     }
     .card{
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:22px;
+      margin-bottom:18px;
     }
-    .hero .left{
-      padding: 28px 24px 22px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero .left:after{
-      content:"";
-      position:absolute;
-      inset:-80px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,111,177,.25), transparent 40%),
-        radial-gradient(circle at 70% 10%, rgba(124,92,255,.22), transparent 45%);
-      pointer-events:none;
-    }
-
     h1{
-      position:relative;
+      font-size:40px;
       margin:0 0 10px;
-      font-size: clamp(28px, 4.2vw, 46px);
-      letter-spacing:-.02em;
-      line-height:1.05;
     }
     .sub{
-      position:relative;
-      margin:0 0 18px;
-      color: var(--muted);
-      font-size: 15.5px;
-      line-height:1.5;
-      max-width: 65ch;
-    }
-    .ctaRow{
-      position:relative;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 14px;
+      color:#ddd;
+      line-height:1.6;
     }
     button{
-      border:0;
+      border:none;
+      border-radius:12px;
+      padding:12px 16px;
+      font-weight:600;
       cursor:pointer;
-      padding: 12px 14px;
-      border-radius: 12px;
-      font-weight: 650;
-      letter-spacing:.01em;
-      transition: transform .12s ease, filter .12s ease;
-      user-select:none;
     }
     .primary{
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: white;
+      background:linear-gradient(135deg,#ff6fb1,#7c5cff);
+      color:white;
     }
     .ghost{
-      background: rgba(255,255,255,.08);
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.12);
+      color:white;
     }
-    button:hover{ transform: translateY(-1px); filter: brightness(1.05); }
-    button:active{ transform: translateY(0px); filter: brightness(.98); }
-
-    .right{
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .photo{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.14);
-      overflow:hidden;
-      aspect-ratio: 4/5;
-      background:
-        radial-gradient(circle at 30% 25%, rgba(255,111,177,.32), transparent 55%),
-        radial-gradient(circle at 70% 20%, rgba(124,92,255,.28), transparent 52%),
-        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding: 0;
-    }
-    .photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .tiny{
-      font-family: var(--mono);
-      font-size: 12px;
-      color: rgba(255,255,255,.75);
-    }
-
     .grid{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-      margin-top: 16px;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
     }
-    .section{ padding: 18px; }
-    .section h2{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing:-.01em;
-    }
-    .section p{ margin: 0; color: var(--muted); line-height:1.55; font-size: 14.5px; }
-
-    .col-7{ grid-column: span 7; }
-    .col-5{ grid-column: span 5; }
-    .col-12{ grid-column: span 12; }
-
-    .list{ margin-top: 10px; display:grid; gap: 10px; }
-    .chip{
-      padding: 12px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      margin-top: 4px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      flex: 0 0 auto;
+    @media(max-width:700px){
+      .grid{grid-template-columns:1fr}
     }
 
-    /* Modals */
+    /* Modal */
     .modal{
       position:fixed;
       inset:0;
       display:none;
       place-items:center;
-      padding: 18px;
-      background: rgba(0,0,0,.55);
-      z-index: 10;
+      background:rgba(0,0,0,.6);
+      z-index:10;
     }
-    .modal.open{ display:grid; }
-
-    /* Default modal card (gallery / surprise) */
-    .modalCard{
-      max-width: 740px;
-      width: 100%;
-      border-radius: 18px;
-      background: rgba(20, 18, 40, .92);
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      backdrop-filter: blur(10px);
-    }
-    .modalTop{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .modalTop h3{
-      margin:0;
-      font-size: 16px;
-      letter-spacing: -.01em;
-    }
-    .closeBtn{
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.14);
-      color: var(--text);
-      padding: 8px 10px;
-      border-radius: 12px;
-      font-weight: 650;
-      cursor:pointer;
-    }
+    .modal.open{display:grid}
 
     /* Letter paper look */
-    .letterCard{
-      max-width: 920px;
-      width: 100%;
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.18);
-      background:
-        radial-gradient(900px 500px at 10% 10%, rgba(255,255,255,.65), rgba(255,255,255,.15)),
-        linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.88));
-      color: rgba(20,20,20,.92);
-      overflow:hidden;
-      transform: translateY(10px) scale(.985);
-      opacity: 0;
-      animation: letterIn .28s ease forwards;
+    .letter{
+      background:#f7f4ef;
+      color:#222;
+      border-radius:16px;
+      max-width:900px;
+      width:100%;
+      padding:20px;
+      box-shadow:0 20px 50px rgba(0,0,0,.4);
+      animation:pop .3s ease;
     }
-    @keyframes letterIn{
-      to{ transform: translateY(0) scale(1); opacity: 1; }
+    @keyframes pop{
+      from{transform:scale(.96);opacity:0}
+      to{transform:scale(1);opacity:1}
     }
-    .letterHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(0,0,0,.08);
-      background: rgba(255,255,255,.6);
-      backdrop-filter: blur(6px);
+    .letterGrid{
+      display:grid;
+      grid-template-columns:1.4fr .6fr;
+      gap:16px;
     }
-    .letterHeader h3{
-      margin:0;
-      font-size: 16px;
-      letter-spacing:-.01em;
+    @media(max-width:700px){
+      .letterGrid{grid-template-columns:1fr}
     }
-    .letterClose{
-      background: rgba(0,0,0,.06);
-      border: 1px solid rgba(0,0,0,.10);
-      color: rgba(10,10,10,.85);
-      padding: 8px 10px;
-      border-radius: 12px;
-      font-weight: 700;
+    .letter p{
+      line-height:1.8;
+      font-size:16px;
+    }
+    .letter img{
+      width:100%;
+      border-radius:12px;
+      object-fit:cover;
+    }
+    .close{
+      float:right;
+      background:#eee;
+      padding:6px 10px;
+      border-radius:10px;
       cursor:pointer;
     }
-    .letterBodyWrap{
-      display:grid;
-      grid-template-columns: 1.35fr .65fr;
-      gap: 14px;
-      padding: 16px;
-    }
-    .letterText{
-      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-      line-height: 1.75;
-      font-size: 16px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.65);
-      border: 1px solid rgba(0,0,0,.08);
-    }
-    .letterText p{ margin: 0 0 12px; }
-    .sig{
-      margin-top: 10px;
-      font-weight: 700;
-    }
-    .letterSide{
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-    .letterPhoto{
-      border-radius: 14px;
-      overflow:hidden;
-      border: 1px solid rgba(0,0,0,.10);
-      aspect-ratio: 3/4;
-      background: rgba(0,0,0,.05);
-    }
-    .letterPhoto img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .letterNote{
-      font-family: var(--mono);
-      font-size: 12px;
-      color: rgba(0,0,0,.55);
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.6);
-      border: 1px solid rgba(0,0,0,.08);
-    }
 
-    /* toast popup */
+    /* Toast */
     .toast{
-      position: fixed;
-      left: 50%;
-      top: 16px;
-      transform: translateX(-50%) translateY(-8px);
-      background: rgba(20,18,40,.92);
-      border: 1px solid rgba(255,255,255,.16);
-      color: rgba(255,255,255,.92);
-      border-radius: 14px;
-      padding: 10px 12px;
-      box-shadow: var(--shadow);
-      z-index: 50;
+      position:fixed;
+      top:14px;
+      left:50%;
+      transform:translateX(-50%);
+      background:#141228;
+      padding:10px 14px;
+      border-radius:12px;
       display:none;
-      max-width: 92vw;
-      font-size: 13px;
+      z-index:20;
     }
     .toast.show{
       display:block;
-      animation: toastIn .2s ease forwards, toastOut .25s ease forwards 2.2s;
+      animation:fade 2.5s forwards;
     }
-    @keyframes toastIn{ to{ transform: translateX(-50%) translateY(0); } }
-    @keyframes toastOut{ to{ opacity:0; transform: translateX(-50%) translateY(-6px); } }
-
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .g{
-      border-radius: 14px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.12);
-      aspect-ratio: 1/1;
-      background: rgba(255,255,255,.06);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color: rgba(255,255,255,.65);
-      font-size: 12px;
-      text-align:center;
-      padding: 8px;
-    }
-    .g img{ width:100%; height:100%; object-fit:cover; display:block; }
-
-    footer{
-      margin-top: 18px;
-      text-align:center;
-      color: rgba(255,255,255,.65);
-      font-size: 12.5px;
-    }
-
-    @media (max-width: 860px){
-      .hero{ grid-template-columns: 1fr; }
-      .gallery{ grid-template-columns: repeat(2, 1fr); }
-      .letterBodyWrap{ grid-template-columns: 1fr; }
-      .letterPhoto{ aspect-ratio: 16/9; }
+    @keyframes fade{
+      0%{opacity:1}
+      80%{opacity:1}
+      100%{opacity:0}
     }
   </style>
 </head>
 
 <body>
-  <div class="toast" id="toast">💌 A letter for you. Read it slowly.</div>
 
-  <div class="wrap">
-    <header>
-      <div class="badge">💌 made by: <span id="fromName"></span></div>
-      <div class="badge">🎂 <span id="bdayDate"></span></div>
-    </header>
+<div class="toast" id="toast">💌 A letter for you. Read it slowly.</div>
 
-    <section class="hero">
-      <div class="card left">
-        <h1>Happy Birthday, <span id="toName"></span> 💖</h1>
-        <p class="sub" id="heroMsg"></p>
+<div class="wrap">
 
-        <div class="ctaRow">
-          <button class="primary" id="openLetter">Open your letter ✨</button>
-          <button class="ghost" id="openGallery">Our gallery 📸</button>
-          <button class="ghost" id="openSurprise">Tiny surprise 🎁</button>
-        </div>
-      </div>
-
-      <div class="card right">
-        <div class="photo" id="mainPhoto">
-          <img src="photo1.jpg" alt="Bouquet" />
-        </div>
-        <div class="tiny" id="countdownText"></div>
-      </div>
-    </section>
-
-    <section class="grid">
-      <div class="card section col-7">
-        <h2>Reasons I’m obsessed with you</h2>
-        <div class="list" id="reasonsList"></div>
-      </div>
-
-      <div class="card section col-5">
-        <h2>Long-distance facts</h2>
-        <div class="list" id="timelineList"></div>
-      </div>
-
-      <div class="card section col-12">
-        <h2>One promise</h2>
-        <p id="promiseText"></p>
-      </div>
-    </section>
-
-    <footer>
-      built with love • press <span style="font-family:var(--mono)">L</span> for letter •
-      <span style="font-family:var(--mono)">G</span> for gallery • press <span style="font-family:var(--mono)">Esc</span> to close
-    </footer>
+  <div class="card">
+    <h1>Happy Birthday, Riya 💖</h1>
+    <p class="sub">
+      I made this little website for you so you feel loved,
+      even from far away.
+    </p>
+    <button class="primary" onclick="openLetter()">Open your letter ✨</button>
   </div>
 
-  <!-- LETTER MODAL -->
-  <div class="modal" id="letterModal" aria-hidden="true">
-    <div class="letterCard">
-      <div class="letterHeader">
-        <h3>💌 A letter for you</h3>
-        <button class="letterClose" data-close="letterModal">Close</button>
-      </div>
+  <div class="grid">
+    <div class="card">
+      <h3>Reasons I’m obsessed with you</h3>
+      <p>You make everything feel better.</p>
+      <p>You feel like home, even from miles away.</p>
+      <p>You make me genuinely happy.</p>
+    </div>
 
-      <div class="letterBodyWrap">
-        <div class="letterText" id="letterBody"></div>
-
-        <div class="letterSide">
-          <div class="letterPhoto">
-            <img src="photo1.jpg" alt="Bouquet" />
-          </div>
-          <div class="letterNote">For you — today and always 🤍</div>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Long-distance facts</h3>
+      <p>Distance: 0/10 experience.</p>
+      <p>Us: Obsessed with you.</p>
+      <p>Patience: Worth it.</p>
+      <p>Future: Looks bright with you ✨</p>
     </div>
   </div>
 
-  <!-- GALLERY MODAL -->
-  <div class="modal" id="galleryModal" aria-hidden="true">
-    <div class="modalCard">
-      <div class="modalTop">
-        <h3>📸 Our Gallery</h3>
-        <button class="closeBtn" data-close="galleryModal">Close</button>
-      </div>
-      <div class="tiny">These load from your repo: photo1.jpg → photo4.jpg</div>
-      <div class="gallery" id="galleryGrid"></div>
-    </div>
-  </div>
+</div>
 
-  <!-- SURPRISE MODAL -->
-  <div class="modal" id="surpriseModal" aria-hidden="true">
-    <div class="modalCard">
-      <div class="modalTop">
-        <h3>🎁 Tiny Surprise</h3>
-        <button class="closeBtn" data-close="surpriseModal">Close</button>
-      </div>
-      <p style="margin:0; color: rgba(255,255,255,.82); line-height:1.7; font-size: 14.7px;">
-        If I could teleport one thing to you right now, it would be:
-        <strong>a long hug</strong> and <strong>me being there with you</strong>.
-        <br><br>
-        Happy Birthday, Riya 🤍
-      </p>
-    </div>
-  </div>
+<!-- LETTER MODAL -->
+<div class="modal" id="letterModal">
+  <div class="letter">
+    <span class="close" onclick="closeLetter()">Close</span>
 
-  <script>
-    // =========================
-    // CUSTOMIZED DETAILS
-    // =========================
-    const data = {
-      fromName: "Devang Maheshwari",
-      toName: "Riya",
-      nextBirthdayISO: nextOccurrenceISO(1, 29), // Jan 29
-      birthdayLabel: "29 Jan 🎂",
-
-      heroMessage:
-        "Happy Birthday, Riya ❤️ Long distance tried its best, but here we are anyway. " +
-        "I made you this little website so you feel loved even from far away.",
-
-      promise:
-        "Even from far away, I’ll still show up — in your calls, your laughs, your bad days, and your dreams. " +
-        "Distance is temporary. My love for you is not.",
-
-      reasons: [
-        "You make everything feel lighter.",
-        "You feel like home, even from miles away.",
-        "You make me genuinely happy.",
-        "I still randomly smile thinking about us.",
-        "I’m honestly just… obsessed with you."
-      ],
-
-      // ✅ Updated per your request (no video calls + Us/Future exact vibe)
-      timeline: [
-        { title: "Distance", note: "0/10 experience. Actively hate it." },
-        { title: "Us", note: "Obsessed with you." },
-        { title: "Patience", note: "Worth it — because it’s you." },
-        { title: "Future", note: "Future looks bright with you ✨" }
-      ],
-
-      // ✅ Your requested letter text (nicknames removed, stealing flowers removed)
-      letterHTML: `
+    <div class="letterGrid">
+      <div>
         <p>Happy Birthday, Riya.</p>
 
         <p>
-          I can’t believe you are my girlfriend sometimes. I still replay all the dates we went on,
-          especially the last one, because I still don’t know how you said yes.
+          I can’t believe you are my girlfriend sometimes.
+          I still replay all the dates we went on, especially the last one,
+          because I still don’t know how you said yes.
         </p>
 
         <p>
@@ -575,162 +187,32 @@ index.html
         </p>
 
         <p>
-          I just want you to know you are very special to me. And I’m so glad I was your first kiss,
-          as you were also my best kiss ever — and it’s going to stay like that for the rest of my life.
+          I just want you to know you are very special to me.
+          I’m so glad I was your first kiss, and you were also my best kiss ever —
+          and it’s going to stay like that for the rest of my life.
         </p>
 
-        <p class="sig">— Devang</p>
-      `,
+        <p>— Devang</p>
+      </div>
 
-      galleryImages: ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg"]
-    };
+      <div>
+        <img src="photo1.jpg" alt="Bouquet">
+      </div>
+    </div>
+  </div>
+</div>
 
-    // =========================
-    // RENDER
-    // =========================
-    const $ = (id) => document.getElementById(id);
+<script>
+function openLetter(){
+  document.getElementById("letterModal").classList.add("open");
+  const t=document.getElementById("toast");
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2500);
+}
+function closeLetter(){
+  document.getElementById("letterModal").classList.remove("open");
+}
+</script>
 
-    $("fromName").textContent = data.fromName;
-    $("toName").textContent = data.toName;
-    $("bdayDate").textContent = data.birthdayLabel;
-    $("heroMsg").textContent = data.heroMessage;
-    $("promiseText").textContent = data.promise;
-    $("letterBody").innerHTML = data.letterHTML;
-
-    // Reasons list
-    const reasonsWrap = $("reasonsList");
-    data.reasons.forEach(r => {
-      const div = document.createElement("div");
-      div.className = "chip";
-      div.innerHTML = `<div class="dot"></div><div>${escapeHTML(r)}</div>`;
-      reasonsWrap.appendChild(div);
-    });
-
-    // Timeline list
-    const timelineWrap = $("timelineList");
-    data.timeline.forEach(t => {
-      const div = document.createElement("div");
-      div.className = "chip";
-      div.innerHTML =
-        `<div class="dot"></div>
-         <div>
-           <div style="font-weight:700">${escapeHTML(t.title)}</div>
-           <div style="color:rgba(255,255,255,.72); font-size: 13px; line-height:1.45; margin-top:2px">${escapeHTML(t.note)}</div>
-         </div>`;
-      timelineWrap.appendChild(div);
-    });
-
-    // Gallery grid
-    const galleryGrid = $("galleryGrid");
-    data.galleryImages.forEach((src, idx) => {
-      const box = document.createElement("div");
-      box.className = "g";
-      box.innerHTML = `<div>Image ${idx+1}<br><span style="opacity:.75">${escapeHTML(src)}</span></div>`;
-      const img = new Image();
-      img.src = src;
-      img.alt = `Gallery image ${idx+1}`;
-      img.onload = () => { box.innerHTML = ""; box.appendChild(img); };
-      img.onerror = () => { /* keep placeholder */ };
-      galleryGrid.appendChild(box);
-    });
-
-    // =========================
-    // COUNTDOWN
-    // =========================
-    const bday = new Date(data.nextBirthdayISO + "T00:00:00");
-    function tick(){
-      const now = new Date();
-      const diff = bday - now;
-      const el = $("countdownText");
-
-      if (diff <= 0){
-        el.textContent = "🎉 It’s her birthday today! Go spam her with love.";
-        return;
-      }
-      const days = Math.floor(diff / (1000*60*60*24));
-      const hours = Math.floor((diff / (1000*60*60)) % 24);
-      const mins = Math.floor((diff / (1000*60)) % 60);
-
-      el.textContent = `Countdown to 29 Jan: ${days}d ${hours}h ${mins}m`;
-    }
-    tick();
-    setInterval(tick, 30 * 1000);
-
-    // =========================
-    // MODALS + TOAST
-    // =========================
-    function openModal(id){
-      $(id).classList.add("open");
-      if(id === "letterModal"){
-        const t = $("toast");
-        t.classList.remove("show");
-        void t.offsetWidth; // restart animation
-        t.classList.add("show");
-      }
-    }
-    function closeModal(id){ $(id).classList.remove("open"); }
-
-    document.getElementById("openLetter").addEventListener("click", () => openModal("letterModal"));
-    document.getElementById("openGallery").addEventListener("click", () => openModal("galleryModal"));
-    document.getElementById("openSurprise").addEventListener("click", () => openModal("surpriseModal"));
-
-    document.querySelectorAll("[data-close]").forEach(btn => {
-      btn.addEventListener("click", () => closeModal(btn.getAttribute("data-close")));
-    });
-
-    document.querySelectorAll(".modal").forEach(m => {
-      m.addEventListener("click", (e) => { if(e.target === m) m.classList.remove("open"); });
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key.toLowerCase() === "l") openModal("letterModal");
-      if (e.key.toLowerCase() === "g") openModal("galleryModal");
-      if (e.key === "Escape"){
-        ["letterModal","galleryModal","surpriseModal"].forEach(closeModal);
-      }
-    });
-
-    // =========================
-    // HEARTS
-    // =========================
-    function spawnHeart(){
-      const h = document.createElement("div");
-      h.className = "heart";
-      const size = 10 + Math.random()*16;
-      h.style.width = size + "px";
-      h.style.height = size + "px";
-      h.style.left = (Math.random()*100) + "vw";
-      h.style.animationDuration = (5 + Math.random()*6) + "s";
-      h.style.opacity = (0.4 + Math.random()*0.5).toFixed(2);
-      document.body.appendChild(h);
-      setTimeout(() => h.remove(), 12000);
-    }
-    setInterval(spawnHeart, 420);
-
-    // =========================
-    // UTIL
-    // =========================
-    function escapeHTML(str){
-      return String(str)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-    }
-
-    function nextOccurrenceISO(month1to12, day){
-      const now = new Date();
-      let year = now.getFullYear();
-      const candidate = new Date(year, month1to12 - 1, day, 0, 0, 0);
-      if (candidate < now) year += 1;
-      const next = new Date(year, month1to12 - 1, day, 0, 0, 0);
-
-      const yyyy = next.getFullYear();
-      const mm = String(next.getMonth() + 1).padStart(2, "0");
-      const dd = String(next.getDate()).padStart(2, "0");
-      return `${yyyy}-${mm}-${dd}`;
-    }
-  </script>
 </body>
 </html>
